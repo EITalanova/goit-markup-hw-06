@@ -220,10 +220,25 @@ body {
   display: flex;
 }
 
-.table_cell::before {
+.table-box {
+  display: flex;
+  justify-content: center;
+  padding: 25px 0;
+  margin-bottom: 30px;
+
+  /* outline: 1px solid royalblue; */
+  background-color: var(--back-lgrey);
+  
+}
+
+.table-icon {
+  
+}
+
+/* .table_cell::before {
   display: block;
-  height: 120px;
-  /* padding: 25px 100px; */
+  height: 120px; */
+  /* padding: 25px 100px;
 
   content: "";
   margin-bottom: 30px;
@@ -248,7 +263,7 @@ body {
 
 .table-icon-astronaut::before {
   background-image: url(../images/astronaut.svg);
-}
+} */
 
 .table_cell:not(:last-child) {
   margin-right: 30px;
@@ -358,6 +373,60 @@ body {
   line-height: 1.88;
   letter-spacing: 0.03em;
 }
+
+.clients {
+  width: 1200px;
+  padding-top: 94px;
+  margin: 0 auto;
+}
+
+.clients-title {
+  text-align: center;
+  margin-bottom: 50px;
+
+font-weight: 700;
+font-size: 36px;
+line-height: 1.17;
+letter-spacing: 0.03em;
+
+
+}
+
+.clients-container {
+
+  outline: 1px solid fuchsia;
+}
+
+.clients-logo {
+  display: flex;
+  justify-content: center;
+  outline: 1px solid fuchsia;
+}
+
+.clients-box {
+  
+padding: 16px 32px;
+
+ outline: 1px solid rgba(175, 177, 184, 1);
+ border-radius: 4px;
+ fill: #AFB1B8;
+
+
+}
+
+.clients-box:hover {
+  fill: var(--activity-blue);
+  border: 1px solid var(--activity-blue);
+}
+
+.clients-box:not(:last-child) {
+margin-right: 30px;
+}
+
+.clients-icon {
+ 
+}
+
 
 .footer {
   background-color: var(--back-grey);
