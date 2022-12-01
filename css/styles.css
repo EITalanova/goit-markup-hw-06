@@ -8,10 +8,10 @@
   --text-black: #000;
   --icon-grey: #afb1b8;
 
-  --animation-link: color 2500ms cubic-bezier(0.4, 0, 0.2, 1);
-  --animation-button: background-color 2500ms cubic-bezier(0.4, 0, 0.2, 1);
-  --animation-shadow: box-shadow 2500ms cubic-bezier(0.4, 0, 0.2, 1);
-  --animation-border: border 2500ms cubic-bezier(0.4, 0, 0.2, 1);
+  --animation-link: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --animation-button: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --animation-shadow: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --animation-border: border 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* Общие стили*/
@@ -52,7 +52,6 @@ body {
   font-family: "Roboto", sans-serif;
   font-style: normal;
 }
-
 /* **** */
 
 .header_container {
@@ -198,20 +197,12 @@ body {
   height: 100%;
   top: 0;
   left: 0;
-  opacity: 0;
 
-  transition: background-color 2500ms cubic-bezier(0.4, 0, 0.2, 1);
-  background-color: rgba(47, 48, 58, 0.4);
+  transition: var(--animation-button);
 }
 
 .hero-container:hover .hero-overlay {
-  /* background-image: linear-gradient(
-      to right,
-      rgba(47, 48, 58, 0.4),
-      rgba(47, 48, 58, 0.4)
-    ),
-    url(../images/people-work.jpg); */
-  opacity: 1;
+  background-color: rgba(47, 48, 58, 0.4);
 }
 
 .hero_title {
@@ -224,6 +215,7 @@ body {
   line-height: 1.36;
   letter-spacing: 0.06em;
   text-transform: uppercase;
+  z-index: 1;
 }
 
 .hero_button {
@@ -241,6 +233,7 @@ body {
   border: none;
 
   transition: var(--animation-button);
+  z-index: 1;
 }
 
 .hero_button:hover,
@@ -682,7 +675,7 @@ body {
   width: 100%;
 
   transform: translateY(100%);
-  transition: transform 2500ms ease;
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
   background: rgba(33, 150, 243, 0.9);
 }
@@ -700,32 +693,51 @@ body {
   transform: translate(0);
 }
 
-.modal-box {
-  position: absolute;
+.backdrop {
+  position: fixed;
+  z-index: 3;
   width: 100%;
   height: 100%;
   top: 0;
   left: 0;
+  visibility: visible;
+  opacity: 1;
 
   background-color: rgba(0, 0, 0, 0.2);
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.backdrop.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.backdrop.is-hidden .modal {
+  transform: translate(-50%, -50%) scale(0.6);
 }
 
 .modal {
-  position: fixed;
+  position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
-  width: 528px;
-  height: 581px;
-
+  transform: translate(-50%, -50%) scale(1);
+  min-width: 528px;
+  min-height: 581px;
 
   background-color: var(--text-white);
-  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
+    0px 2px 1px rgba(0, 0, 0, 0.2);
   border-radius: 4px;
-  
+
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.modal-img {
+.modal-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: absolute;
   width: 30px;
   height: 30px;
