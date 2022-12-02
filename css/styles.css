@@ -619,7 +619,7 @@ body {
 
 .project {
   margin: 15px;
-  transition: var(--animation-shadow);
+  transition: var(--animation-button);
 }
 
 .project:hover {
