@@ -489,6 +489,30 @@
             </li>
           </ul>
         </div>
+
+        <div class="subscription-conteiner">
+          <!-- <p class="subscription-text"></p> -->
+          <form>
+            <label class="subscription-text" for="email"
+              >Підпишіться на розсилку
+            </label>
+
+            <div class="subscription-box">
+              <input
+                class="subscription-field"
+                type="email"
+                name="email"
+                placeholder="E-mail"
+              />
+              <button class="subscription-btn" type="submit">
+                Підписатися
+                <svg class="subscription-icon" wigth="24" height="24">
+                  <use href="./images/icons.svg#icon-send"></use>
+                </svg>
+              </button>
+            </div>
+          </form>
+        </div>
       </section>
     </footer>
 
@@ -499,6 +523,48 @@
             <use href="./images/icons.svg#icon-close"></use>
           </svg>
         </button>
+
+        <form class="form-request">
+          <h2>Залиште свої дані, ми вам передзвонимо</h2>
+
+          <div class="form-styles">
+            <label class="form-name" for="name">Ім'я</label>
+            <input class="form-field" type="text" name="name" />
+          </div>
+
+          <div class="form-styles">
+            <label for="telephone">Телефон</label>
+            <input type="tel" name="telephone" />
+          </div>
+
+          <div class="form-styles">
+            <label for="mail">Пошта</label>
+            <input type="email" name="mail" />
+          </div>
+
+          <div class="form-styles">
+            <label for="comment">Коментар</label>
+            <textarea
+              class="form-comment"
+              name="comment"
+              id=""
+              cols="30"
+              rows="10"
+              placeholder="Введіть текст"
+            ></textarea>
+          </div>
+
+          <div class="form-styles-confirm">
+            <input type="checkbox" name="confirm" />
+            <label for="confirm"
+              >Погоджуюся з розсилкою та приймаю Умови договору</label
+            >
+          </div>
+
+          <div class="form-styles-btn">
+            <button type="submit">Відправити</button>
+          </div>
+        </form>
       </div>
     </div>
     <script src="./js/modal.js"></script>
