@@ -8,10 +8,8 @@
   --text-black: #000;
   --icon-grey: #afb1b8;
 
-  --animation-link: color 2500ms cubic-bezier(0.4, 0, 0.2, 1);
-  --animation-button: background-color 2500ms cubic-bezier(0.4, 0, 0.2, 1);
-  --animation-shadow: box-shadow 2500ms cubic-bezier(0.4, 0, 0.2, 1);
-  --animation-border: border 2500ms cubic-bezier(0.4, 0, 0.2, 1);
+  --animation-duration: 250ms;
+  --animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* Общие стили*/
@@ -116,7 +114,7 @@ body {
   padding-bottom: 32px;
 
   color: inherit;
-  transition: var(--animation-link);
+  transition: color var(--animation-duration) var(--animation-timing-function);
 }
 
 .menu_list_link-active {
@@ -172,7 +170,7 @@ body {
   padding-bottom: 32px;
 
   color: var(--text-grey);
-  transition: var(--animation-link);
+  transition: color var(--animation-duration) var(--animation-timing-function);
 }
 
 .header-icon {
@@ -198,7 +196,8 @@ body {
   top: 0;
   left: 0;
 
-  transition: var(--animation-button);
+  transition: background-color var(--animation-duration)
+    var(--animation-timing-function);
 }
 
 .hero-container:hover .hero-overlay {
@@ -232,12 +231,12 @@ body {
   border-radius: 4px;
   border: none;
 
-  transition: var(--animation-button);
+  transition: background-color var(--animation-duration)
+    var(--animation-timing-function);
   z-index: 1;
 }
 
-.hero_button:hover,
-.hero_button:focus {
+.hero_button:active {
   background-color: #188ce8;
 }
 
@@ -437,7 +436,8 @@ body {
 
   border-radius: 50%;
   color: var(--icon-grey);
-  transition: var(--animation-link), var(--animation-button);
+  transition: color var(--animation-duration) var(--animation-timing-function),
+    background-color var(--animation-duration) var(--animation-timing-function);
 }
 
 .social-links:hover,
@@ -491,7 +491,8 @@ body {
   border: 1px solid rgba(175, 177, 184, 1);
   border-radius: 4px;
 
-  transition: var(--animation-link), var(--animation-border);
+  transition: color var(--animation-duration) var(--animation-timing-function),
+    border var(--animation-duration) var(--animation-timing-function);
 }
 
 .clients-link:hover,
@@ -548,7 +549,7 @@ body {
   line-height: 1.71;
   letter-spacing: 0.03em;
 
-  transition: var(--animation-link);
+  transition: color var(--animation-duration) var(--animation-timing-function);
 }
 
 .footer_list_contact:hover,
@@ -572,12 +573,6 @@ body {
   margin-right: 93px;
 }
 
-/* 
-form {
-  display: flex;
- 
-} */
-
 .subscription-box {
   display: flex;
 }
@@ -598,8 +593,6 @@ form {
 }
 
 .subscription-field {
-  /* display: flex; */
-  /* flex-direction: row; */
   align-items: baseline;
   margin-right: 12px;
   padding: 15px;
@@ -617,27 +610,27 @@ form {
 }
 
 .subscription-btn {
-  display: block;
-  /* justify-content: center; */
-  margin-left: auto;
+  display: flex;
+  justify-content: center;
   align-items: center;
-  vertical-align: middle;
   height: 50px;
   width: 200px;
+  padding: 0;
 
   background-color: var(--activity-blue);
-  color: var(--text-white);
+
   border: none;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
   border-radius: 4px;
 
+  color: var(--text-white);
   font-weight: 700;
   font-size: 16px;
   line-height: 30px;
 }
 
 .subscription-icon {
-  margin-right: auto;
+  margin-left: 10px;
 }
 
 .portfolio {
@@ -669,8 +662,10 @@ form {
   border-radius: 4px;
   border: none;
 
-  transition: var(--animation-shadow), var(--animation-link),
-    var(--animation-button);
+  transition: box-shadow var(--animation-duration)
+      var(--animation-timing-function),
+    color var(--animation-duration) var(--animation-timing-function),
+    background-color var(--animation-duration) var(--animation-timing-function);
 }
 
 .filter-button:hover,
@@ -691,11 +686,10 @@ form {
 
 .project {
   margin: 15px;
-  transition: var(--animation-button);
 }
 
-.project:hover,
-.project:focus {
+.project-link:hover,
+.project-link:focus {
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
     1px 4px 6px rgba(0, 0, 0, 0.16);
 }
@@ -708,8 +702,12 @@ form {
 }
 
 .project-link {
+  display: block;
   color: inherit;
   text-decoration: inherit;
+  transition: background-color var(--animation-duration)
+      var(--animation-timing-function),
+    box-shadow var(--animation-duration) var(--animation-timing-function);
 }
 
 .project-title {
@@ -748,7 +746,8 @@ form {
   width: 100%;
 
   transform: translateY(100%);
-  transition: transform 2500ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform var(--animation-duration)
+    var(--animation-timing-function);
 
   background: rgba(33, 150, 243, 0.9);
 }
@@ -762,12 +761,8 @@ form {
   color: var(--text-white);
 }
 
-.project-decor:hover .project-overlay,
+.project-link:hover .project-overlay,
 .project-link:focus .project-overlay {
-  transform: translate(0);
-}
-
-.project:focus .project-overlay {
   transform: translate(0);
 }
 
@@ -782,8 +777,8 @@ form {
   opacity: 1;
 
   background-color: rgba(0, 0, 0, 0.2);
-  transition: opacity 2500ms cubic-bezier(0.4, 0, 0.2, 1),
-    visibility 2500ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: opacity var(--animation-duration) var(--animation-timing-function),
+    visibility var(--animation-duration) var(--animation-timing-function);
 }
 
 .backdrop.is-hidden {
@@ -809,8 +804,6 @@ form {
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
     0px 2px 1px rgba(0, 0, 0, 0.2);
   border-radius: 4px;
-
-  transition: transform 2500ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .modal-button {
@@ -823,18 +816,26 @@ form {
   top: 8px;
   right: 8px;
 
+  background-color: transparent;
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 50%;
+
+  transition: fill var(--animation-duration) var(--animation-timing-function);
+}
+
+.modal-button:hover,
+.modal-button:focus {
+  fill: var(--activity-blue);
 }
 
 .form-title {
   margin-bottom: 12px;
+
   font-weight: 700;
   font-size: 20px;
   line-height: 23px;
   text-align: center;
   letter-spacing: 0.03em;
-
   color: var(--text-main);
 }
 
@@ -850,10 +851,7 @@ form {
   line-height: 14px;
   letter-spacing: 0.01em;
   color: var(--text-grey);
-  
 }
-
-
 
 .form-name {
   margin-bottom: 4px;
@@ -866,9 +864,8 @@ form {
   border: 1px solid rgba(33, 33, 33, 0.2);
   border-radius: 4px;
 
-  /* transition: var(--animation-shadow); */
-  transition: all 2500ms cubic-bezier(0.4, 0, 0.2, 1);
- 
+  transition: border-color var(--animation-duration)
+    var(--animation-timing-function);
 }
 
 .form-field:hover,
@@ -876,14 +873,12 @@ form {
 .form-comment:hover,
 .form-comment:focus {
   border-color: var(--activity-blue);
-
 }
 
 .form-field:hover + .form-svg,
 .form-field:focus + .form-svg {
   fill: var(--activity-blue);
 }
-
 
 .form-svg {
   display: flex;
@@ -892,9 +887,8 @@ form {
   position: absolute;
   top: 29px;
   left: 12px;
-}
 
-.form-request {
+  transition: fill var(--animation-duration) var(--animation-timing-function);
 }
 
 .form-comment {
@@ -903,13 +897,13 @@ form {
   resize: none;
   border: 1px solid rgba(33, 33, 33, 0.2);
   border-radius: 4px;
-
   color: rgba(117, 117, 117, 0.5);
 
-
+  transition: border var(--animation-duration) var(--animation-timing-function);
 }
 
-.form-styles-mail {
+.form-comment::placeholder {
+  color: rgba(117, 117, 117, 0.5);
 }
 
 .form-styles-confirm {
@@ -920,7 +914,6 @@ form {
 
   font-size: 14px;
   line-height: 24px;
-
   letter-spacing: 0.03em;
   color: var(--text-grey);
 }
@@ -942,7 +935,6 @@ form {
   padding: 10px 52px;
 
   border: none;
-
   border-radius: 4px;
   background-color: var(--activity-blue);
   font-weight: 700;
@@ -950,17 +942,19 @@ form {
   line-height: 30px;
   letter-spacing: 0.06em;
   color: var(--text-white);
-  transition: var(--animation-shadow);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+
+  transition: box-shadow var(--animation-duration)
+      var(--animation-timing-function),
+    background-color var(--animation-duration) var(--animation-timing-function);
 }
 
 .form-btn:hover,
-.form-btn:focus {
+.form-btn:focus,
+.form-btn:active {
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+  background-color: #188ce8;
 }
-
-
-
-
 
 .form-confirm {
   width: 1px;
@@ -986,6 +980,7 @@ form {
   top: 50%;
   left: 5px;
   transform: translateY(-50%);
+
   background-color: var(--text-white);
   border: 2px solid var(--text-main);
   border-radius: 2px;
